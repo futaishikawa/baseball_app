@@ -17,12 +17,12 @@
           <%= link_to("FreeBaseBall", "/") %>
         <% end %>
       </div>
-      
+
       <ul class="header-menus">
 
-        <% if @current_user %>
+        <% if user_signed_in? %>
           <li>
-            <%= link_to(@current_user.name,"/users/#{@current_user.id}") %>
+            <%= link_to 'プロフィール変更', edit_user_registration_path %>
           </li>
 
           <li>
@@ -34,10 +34,10 @@
           </li>
 
           <li>
-            <%= link_to("チーム一覧", "/users/index") %>
+            <%= link_to("チーム一覧", "/users") %>
           </li>
           <li>
-            <%= link_to("ログアウト", "/logout",{method:"post"}) %>
+            <%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
           </li>
 
 
@@ -47,21 +47,18 @@
           </li>
 
           <li>
-            <%= link_to("新規チーム登録", "/signup") %>
+            <%= link_to("新規チーム登録", "/users/sign_up") %>
           </li>
 
           <li>
-            <%= link_to("ログイン", "/login") %>
+            <%= link_to("ログイン", "/users/sign_in") %>
           </li>
         <% end %>
       </ul>
     </header>
 
-    <% if flash[:notice] %>
-       <div class="flash">
-         <%= flash[:notice] %>
-       </div>
-    <% end %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
     <%= yield %>
 
