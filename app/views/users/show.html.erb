@@ -1,11 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-
-
-     <h1><br>(<%= @user.username %>)</h1>
-     
-
+     <h1><%= @user.username %></h1>
+     <div class="post-menus">
+       <%= link_to("修正", "/users/edit") %>
+     </div>
   </div>
  </div><!-- End of row -->
 </div><!-- End of container -->

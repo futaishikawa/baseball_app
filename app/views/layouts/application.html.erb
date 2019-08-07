@@ -7,60 +7,51 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <header>
-      <div class="header-logo">
-        <% if @current_user %>
-          <%= link_to("FreeBaseBall", "/posts/index") %>
-        <% else %>
-          <%= link_to("FreeBaseBall", "/") %>
-        <% end %>
-      </div>
-
-      <ul class="header-menus">
-
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
         <% if user_signed_in? %>
-          <li>
-            <%= link_to 'プロフィール変更', edit_user_registration_path %>
-          </li>
-
-          <li>
-            <%= link_to("募集一覧", "/posts/index") %>
-          </li>
-
-          <li>
-            <%= link_to("新規募集", "/posts/new") %>
-          </li>
-
-          <li>
-            <%= link_to("チーム一覧", "/users") %>
-          </li>
-          <li>
-            <%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
-          </li>
-
-
+          <%= link_to("FreeBaseBall", "/posts", id: "logo") %>
         <% else %>
-          <li>
-            <%= link_to("FreeBaseBallとは", "/about") %>
-          </li>
-
-          <li>
-            <%= link_to("新規チーム登録", "/users/sign_up") %>
-          </li>
-
-          <li>
-            <%= link_to("ログイン", "/users/sign_in") %>
-          </li>
+          <%= link_to("FreeBaseBall", "/", id: "logo") %>
         <% end %>
-      </ul>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to 'プロフィール変更', edit_user_registration_path %>
+              </li>
+              <li>
+                <%= link_to("募集一覧", "/posts") %>
+              </li>
+              <li>
+                <%= link_to("新規募集", "/posts/new") %>
+              </li>
+              <li>
+                <%= link_to("チーム一覧", "/users") %>
+              </li>
+              <li>
+                <%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to("FreeBaseBallとは", "/about") %>
+              </li>
+              <li>
+                <%= link_to("新規チーム登録", "/users/sign_up") %>
+              </li>
+              <li>
+                <%= link_to("ログイン", "/users/sign_in") %>
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
     <%= yield %>
-
   </body>
 </html>
