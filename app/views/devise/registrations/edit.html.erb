@@ -1,4 +1,4 @@
-<h2>「<%= @user.username %>」のプロフィール変更はこちら</h2>
+<h2>「<%= @user.username %>様」のプロフィール変更はこちら</h2>
 
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
@@ -15,26 +15,12 @@
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
 
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-        <% end %>
-
         <div class="field">
-          <%= f.label :password , "変更後のパスワード"%> <i>(変更しない場合は入力しないでください)</i><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
-
+          <%= f.label :image , "プロフィール画像" %><br />
+          <%= f.file_field :image %>
         </div>
 
-        <div class="field">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :current_password , "現在のパスワードの入力"%> <br />
-          <%= f.password_field :current_password, autocomplete: "current-password" %>
-        </div>
-
+        
         <div class="actions">
           <%= f.submit "更新！" , class: "btn btn-primary"%>
         </div>

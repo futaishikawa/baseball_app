@@ -21,7 +21,6 @@ class PostsController < ApplicationController
     @post.user = current_user
 
     if @post.save
-      # flash[:notice] = "投稿を作成しました"
       redirect_to("/posts")
     else
       render("posts/new")
@@ -39,7 +38,6 @@ class PostsController < ApplicationController
     @post.day = params[:post][:day]
 
     if @post.save
-      flash[:notice] = "募集内容の編集が完了しました！"
       redirect_to("/posts")
     else
       render("/posts/edit")

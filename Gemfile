@@ -28,6 +28,10 @@ gem 'momentjs-rails'
 gem "font-awesome-rails"
 gem 'bootstrap', '~> 4.1.1'
 
+#sc3
+gem 'carrierwave'
+gem 'fog'
+gem 'mini_magick'
 
 
 group :development, :test do

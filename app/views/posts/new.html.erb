@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
 
-      <%= form_for(@post, url: "/posts/create") do |f| %>
+      <%= form_for @post do |f| %>
       <div class="input-group date datepicker">
           <%= f.label :day  , "日時"%>
           <%= f.text_field :day, class: "form-control datetimepicker-input", id: "start_time", data: {toggle: "datetimepicker", target: "#start_time"} %>

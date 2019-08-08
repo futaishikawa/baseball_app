@@ -3,5 +3,4 @@ class Post < ApplicationRecord
   validates:content,{presence:true,length:{maximum:300}}
   validates:day , presence: true
 
-
 end
