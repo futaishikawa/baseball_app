@@ -8,6 +8,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by(id: params[:id])
+    @comments = @post.comments
+    @comment = Comment.new
   end
 
   def new
@@ -19,14 +21,12 @@ class PostsController < ApplicationController
     @post.content = params[:post][:content]
     @post.day = params[:post][:day]
     @post.user = current_user
-
     if @post.save
       redirect_to("/posts")
     else
       render("posts/new")
     end
   end
-
 
   def edit
     @post = Post.find_by(id: params[:id])
@@ -46,10 +46,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
+
     @post = Post.find_by(id: params[:id])
     @post.destroy
-    flash[:notice] = "募集が削除されました！"
-    redirect_to("/posts/index")
+    redirect_to("/posts")
+
   end
 
   private
@@ -62,6 +63,5 @@ class PostsController < ApplicationController
       @post = current_user.posts.find_by(id: params[:id])
       redirect_to root_url if @post.nil?
     end
-
 
 end

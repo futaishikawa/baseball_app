@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get 'pages/show'
 
   resources :users, :only => [:index, :show]
-  resources :posts
+  resources :posts do
+    resources :comments, only: [:create,:destroy], shallow: true
+  end
 
   get "/" => "home#top"
   get "about" => "home#about"

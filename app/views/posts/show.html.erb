@@ -10,8 +10,38 @@
       </div>
       <div class="post-menus">
         <%= link_to("修正", "/posts/#{@post.id}/edit") %>
-        <%= link_to("削除", "/posts/#{@post.id}/destroy",{method:"post"}) %>
+        <%= link_to("削除", post_path(@post), method: :delete)  %>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="main posts-show">
+  <div class="container">
+    <div class="posts-show-item">
+      <% @comments.each do |comment| %>
+         <%= comment.user.username %>
+        <p><%= comment.comment %></p>
+          <%= link_to "削除", comment, method: :delete, remote: true, data: { confirm: '本当に削除して良いですか？'} %>
+        <br>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <%= form_for [@post, @comment]  do |f| %>
+    　<%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :post_id, value: @post.id %>
+      <div class="field">
+      <%= f.label :comment , "コメントはこちら"%><br />
+      <%= f.text_field :comment, class: "form-control comment-input border-0", placeholder: "コメントを入力...", autocomplete: :off %>
+      </div>
+      <div class="actions">
+      <%= f.submit 'コメントする' %>
+      </div>
+    <% end %>
   </div>
 </div>

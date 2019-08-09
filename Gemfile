@@ -8,11 +8,9 @@ end
 #日本語化
 gem 'rails-i18n'
 gem 'mysql2'
-#gem 'rails', '~> 5.0.7', '>= 5.0.7.2'
 gem 'rails',        '5.1.6'
 gem 'bcrypt',         '3.1.12'
 gem 'bootstrap-sass', '3.3.7'
-#gem 'sqlite3', '~> 1.3.6'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -32,6 +30,9 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
+
+gem 'will_paginate',           '3.1.6'
+gem 'bootstrap-will_paginate', '1.0.0'
 
 
 group :development, :test do
