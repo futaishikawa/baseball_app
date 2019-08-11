@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
      end
    end
 
-　　def destroy
+　 def destroy
       @comment = Comment.find(params[:id])
       @post = @comment.post
       @comment.destroy
@@ -23,4 +23,5 @@ class CommentsController < ApplicationController
       def comment_params
         params.required(:comment).permit(:user_id, :post_id, :comment)
       end
+
 end

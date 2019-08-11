@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
+gem 'coffee-script-source', '1.8.0'
 
 #カレンダー
 gem "bootstrap4-datetime-picker-rails"
@@ -56,7 +57,7 @@ group :test do
 end
 
 group :production do
-    gem 'unicorn'
+    gem 'unicorn', '5.4.1'
 end
 
 
