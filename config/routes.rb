@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :users, :only => [:index, :show]
   resources :posts do
-    resources :comments, only: [:create,:destroy], shallow: true
+    resources :comments, only: [:create, :destroy], shallow: true
   end
 
   get "/" => "home#top"
